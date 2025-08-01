@@ -1,21 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import html2canvas from 'html2canvas';
 
 function App() {
   const [linea1, setlinea1] = useState('');
   const [linea2, setlinea2] = useState('');
-  const onChangel1 = function (TEXTO) {
-    setlinea1(TEXTO.target.value);
+  const [imagen, setimg] = useState('');
+  const onChangel1 = function (evento) {
+    setlinea1(evento.target.value);
   };
-  const onChangel2 = function (e) {
-    setlinea2(e.target.value);
+  const onChangel2 = function (evento) {
+    setlinea2(evento.target.value);
   };
+  const onChangeImagen = function (evento) {
+    setimg(evento.target.value);
+  };
+  
+  const onClickExportar = function () {
+    alert("Exportando...");
+    html2canvas(document.querySelector(".characters")).then(canvas => {
+      document.body.appendChild(canvas);
+    });
+  }
+
   return (
     <div className="App">
       
 
-      <select>1
+      <select onChange={onChangeImagen}>
         <option value="maelle">Maelle</option>
         <option value="Sciel">Sciel</option>
         <option value="Lune">Lune</option>
@@ -29,12 +42,12 @@ function App() {
       <br />
       <input onChange={onChangel2} type="text" placeholder="linea2"/>
       {/* boton exportar */}
-      <button>Exportar</button>
+      <button onClick={onClickExportar} >Exportar</button>
 
-      <div>
+      <div className='characters'>
         <span>{linea1} </span>
+        <img src={"/img/"+imagen+".jpg"} />  
         <span>{linea2}</span>
-        <img src="" />  
       </div>
 
     </div>
