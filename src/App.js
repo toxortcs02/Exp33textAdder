@@ -28,34 +28,34 @@ function App() {
     })
     }
 
-  return (
-    <div className="App">
-      
-
-      <select onChange={onChangeImagen}>
-        <option value="maelle">Maelle</option>
-        <option value="Sciel">Sciel</option>
-        <option value="Lune">Lune</option>
-        <option value="gustave">Gustave</option>
-        <option value="verso">Verso</option>
-        <option value="monoco">Monoco</option>
-        <option value="renoir">Renoir</option>
-        <option value="Clea">Clea</option>
-      </select>  <br />
-      <input onChange={onChangel1} type="text" placeholder="linea1"/>
-      <br />
-      <input onChange={onChangel2} type="text" placeholder="linea2"/>
-      {/* boton exportar */}
-      <button onClick={onClickExportar} >Exportar</button>
-
-      <div className='characters' id="characters">
-        <span>{linea1} </span>
-        <img src={"/img/"+imagen+".jpg"} />  
-        <span>{linea2}</span>
+return (
+  <div className="App">
+    <div className="container">
+      <h1 className="title">Creador de Personajes</h1>
+      <div className="form">
+        <select onChange={onChangeImagen} className="select">
+          <option value="">Selecciona un personaje</option>
+          <option value="maelle">Maelle</option>
+          <option value="Sciel">Sciel</option>
+          <option value="Lune">Lune</option>
+          <option value="gustave">Gustave</option>
+          <option value="verso">Verso</option>
+          <option value="monoco">Monoco</option>
+          <option value="renoir">Renoir</option>
+          <option value="Clea">Clea</option>
+        </select>
+        <input onChange={onChangel1} type="text" placeholder="Línea superior" className="input"/>
+        <input onChange={onChangel2} type="text" placeholder="Línea inferior" className="input"/>
+        <button onClick={onClickExportar} className="btn">Exportar</button>
       </div>
-
+      <div className='characters' id="characters">
+        <span className="linea">{linea1}</span>
+        <img src={"/img/"+imagen+".jpg"} alt={imagen ? imagen : ""} className="personaje-img"/>
+        <span className="linea">{linea2}</span>
+      </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
