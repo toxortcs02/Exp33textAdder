@@ -11,14 +11,7 @@ function App() {
 
   const onChangel1 = (evento) => setlinea1(evento.target.value);
   const onChangel2 = (evento) => setlinea2(evento.target.value);
-  const onChangeImagen = (evento) => {
-    if (importedImg) {
-      const confirmChange = window.confirm("¿Estas seguro que quieres cambiar la imagen?");
-      if (!confirmChange) return;
-      setImportedImg(null);
-    }
-    setimg(evento.target.value);
-  };
+  const onChangeImagen = (evento) => setimg(evento.target.value);
 
   const onImportImg = (evento) => {
     const file = evento.target.files[0];
@@ -55,20 +48,26 @@ function App() {
             <option value="renoir">Renoir</option>
             <option value="Clea">Clea</option>
           </select>
-          <input onChange={onChangel1} type="text" placeholder="Línea superior" className="input"/>
-          <input onChange={onChangel2} type="text" placeholder="Línea inferior" className="input"/>
-          <input type="file" accept="image/*" onChange={onImportImg} className="input"/>
+          <input onChange={onChangel1} type="text" placeholder="Línea superior" className="input" />
+          <input onChange={onChangel2} type="text" placeholder="Línea inferior" className="input" />
+          <input type="file" accept="image/*" onChange={onImportImg} className="input" />
           <button onClick={onClickExportar} className="btn">Exportar</button>
         </div>
         <div className='characters' id="characters">
-          <span className="linea">{linea1}</span>
-          <img
-            src={importedImg ? importedImg : "/img/" + imagen + ".jpg"}
-            alt={imagen ? imagen : ""}
-            className="personaje-img"
-          />
-          <span className="linea">{linea2}</span>
+          <span>{linea1}</span>
+
+          {importedImg || imagen ? (
+            <img
+              src={importedImg || "/img/" + imagen + ".jpg"}
+              alt="Personaje"
+            />
+          ) : (
+            <p>No se seleccionó ninguna imagen.</p>
+          )}
+
+          <span>{linea2}</span>
         </div>
+
       </div>
     </div>
   );
