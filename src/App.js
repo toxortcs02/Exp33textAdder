@@ -11,7 +11,14 @@ function App() {
 
   const onChangel1 = (evento) => setlinea1(evento.target.value);
   const onChangel2 = (evento) => setlinea2(evento.target.value);
-  const onChangeImagen = (evento) => setimg(evento.target.value);
+  const onChangeImagen = (evento) => {
+    if (importedImg) {
+      const confirmChange = window.confirm("¿Estas seguro que quieres cambiar la imagen?");
+      if (!confirmChange) return;
+      setImportedImg(null);
+    }
+    setimg(evento.target.value);
+  };
 
   const onImportImg = (evento) => {
     const file = evento.target.files[0];
