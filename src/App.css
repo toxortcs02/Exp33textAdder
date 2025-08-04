@@ -54,9 +54,9 @@
 }
 
 .characters img {
-  width: 100%;
+  width: 75%;
 }
 
 body, .characters {
-  background: black;
+  background: rgb(61, 61, 61);
 }

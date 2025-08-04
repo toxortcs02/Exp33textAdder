@@ -20,8 +20,8 @@ function App() {
   const onClickExportar = function (evento) {
 
     html2canvas(document.querySelector("#characters")).then(canvas => {
-      var img = canvas.toDataURL("image/png");
-      var link = document.createElement('a');
+      let img = canvas.toDataURL("image/jpg");
+      let link = document.createElement('a');
       link.download = 'char.png';
       link.href = img;
       link.click();
@@ -39,7 +39,7 @@ function App() {
         <option value="gustave">Gustave</option>
         <option value="verso">Verso</option>
         <option value="monoco">Monoco</option>
-        <option value="reno">Renoir</option>
+        <option value="renoir">Renoir</option>
         <option value="Clea">Clea</option>
       </select>  <br />
       <input onChange={onChangel1} type="text" placeholder="linea1"/>
@@ -48,7 +48,7 @@ function App() {
       {/* boton exportar */}
       <button onClick={onClickExportar} >Exportar</button>
 
-      <div className='characters'>
+      <div className='characters' id="characters">
         <span>{linea1} </span>
         <img src={"/img/"+imagen+".jpg"} />  
         <span>{linea2}</span>
