@@ -26,6 +26,7 @@ function App() {
       link.href = img;
       link.click();
     })
+    }
 
   return (
     <div className="App">
