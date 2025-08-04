@@ -17,12 +17,15 @@ function App() {
     setimg(evento.target.value);
   };
   
-  const onClickExportar = function () {
-    alert("Exportando...");
-    html2canvas(document.querySelector(".characters")).then(canvas => {
-      document.body.appendChild(canvas);
-    });
-  }
+  const onClickExportar = function (evento) {
+
+    html2canvas(document.querySelector("#characters")).then(canvas => {
+      var img = canvas.toDataURL("image/png");
+      var link = document.createElement('a');
+      link.download = 'char.png';
+      link.href = img;
+      link.click();
+    })
 
   return (
     <div className="App">
