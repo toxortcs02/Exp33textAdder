@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1 className="title">Creador de Personajes</h1>
+        <h1 className="title">EXPEDITION 33</h1>
         <div className="form">
           <select onChange={onChangeImagen} className="select">
             <option value="">Selecciona un personaje</option>
